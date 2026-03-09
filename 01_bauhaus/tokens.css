@@ -1,0 +1,154 @@
+/**
+ * Bauhaus Design Tokens
+ * Source: EarlyDog website (01_bauhaus/01.jpeg)
+ * Extraction Level: 0 — Base Config
+ *
+ * Methodology: Reverse-engineered from Bauhaus-inspired UI.
+ * All visual atomic values are declared here.
+ * No hardcoded hex/px values should appear in components.
+ */
+
+:root {
+
+  /* ============================================================
+   * COLOR PALETTE
+   * Primary Bauhaus triad + neutrals
+   * ============================================================ */
+
+  /* Primary */
+  --color-red:        #E8401C;   /* Vivid vermillion — circles, diagonal fills, CTA accents */
+  --color-blue:       #1A56DB;   /* Strong cobalt — half-circles, footer bg, headline accent */
+  --color-yellow:     #F5C400;   /* Saturated golden yellow — half-circles, rectangles */
+
+  /* Secondary / Accent */
+  --color-pink:       #F4A7B5;   /* Soft rose pink — accent shapes, diamond motifs */
+  --color-black:      #111111;   /* Near-black — typography, checkerboard, outline strokes */
+  --color-white:      #FFFFFF;   /* Pure white — eye center, button labels, footer text */
+
+  /* Neutral / Background */
+  --color-bg:         #F5F0E8;   /* Warm cream / off-white — page background */
+  --color-bg-section: #F5F0E8;   /* Same as bg (single background tone across sections) */
+  --color-footer-bg:  #1A56DB;   /* Footer uses the primary blue as background */
+
+  /* Semantic aliases */
+  --color-primary:    var(--color-blue);
+  --color-accent:     var(--color-red);
+  --color-highlight:  var(--color-yellow);
+  --color-surface:    var(--color-white);
+  --color-on-surface: var(--color-black);
+  --color-muted:      var(--color-pink);
+
+
+  /* ============================================================
+   * STROKE / BORDER
+   * ============================================================ */
+
+  --stroke-weight-thin:    1px;    /* Sunburst lines, grid outlines, fine detail lines */
+  --stroke-weight-default: 1.5px;  /* Standard component outline stroke */
+  --stroke-weight-bold:    2px;    /* Heavier accents (zigzag, banner borders) */
+
+  --stroke-color-default:  var(--color-black);
+  --stroke-color-light:    var(--color-white);
+
+
+  /* ============================================================
+   * BORDER RADIUS
+   * Bauhaus uses only hard corners or perfect circles
+   * ============================================================ */
+
+  --radius-none:   0px;    /* All rectangles, triangles, checkerboard cells */
+  --radius-full:   50%;    /* All circles and half-circles (clipped) */
+  --radius-button: 999px;  /* Pill-shaped CTA buttons observed in design */
+
+
+  /* ============================================================
+   * TYPOGRAPHY
+   * ============================================================ */
+
+  /* Font families — sans-serif, geometric, modern */
+  --font-display:  'Inter', 'DM Sans', sans-serif;   /* Headlines: "More than managed" */
+  --font-body:     'Inter', 'DM Sans', sans-serif;   /* Body copy, navigation */
+
+  /* Font weights */
+  --font-weight-regular:    400;
+  --font-weight-semibold:   600;
+  --font-weight-bold:       700;
+  --font-weight-extrabold:  800;
+
+  /* Font sizes (fluid scale) */
+  --text-xs:    0.75rem;   /* 12px — legal, footnote */
+  --text-sm:    0.875rem;  /* 14px — nav links, captions */
+  --text-base:  1rem;      /* 16px — body paragraph */
+  --text-lg:    1.125rem;  /* 18px — button labels */
+  --text-xl:    1.5rem;    /* 24px — subheadings */
+  --text-2xl:   2rem;      /* 32px — section headings */
+  --text-4xl:   3rem;      /* 48px — hero headline */
+  --text-6xl:   4rem;      /* 64px — hero display (desktop) */
+
+  /* Line heights */
+  --leading-tight:  1.1;
+  --leading-normal: 1.5;
+  --leading-loose:  1.8;
+
+  /* Letter spacing */
+  --tracking-normal: 0em;
+  --tracking-wide:   0.02em;
+
+
+  /* ============================================================
+   * SPACING SCALE
+   * ============================================================ */
+
+  --space-1:   4px;
+  --space-2:   8px;
+  --space-3:   12px;
+  --space-4:   16px;
+  --space-6:   24px;
+  --space-8:   32px;
+  --space-10:  40px;
+  --space-12:  48px;
+  --space-16:  64px;
+  --space-20:  80px;
+  --space-24:  96px;
+
+
+  /* ============================================================
+   * SIZING / PROPORTION
+   * ============================================================ */
+
+  --size-icon-sm:  24px;
+  --size-icon-md:  48px;
+  --size-icon-lg:  80px;
+  --size-icon-xl:  120px;
+
+  /* Grid gap between bauhaus shape cells */
+  --gap-shape-grid: var(--space-2);   /* ~8px gap in multi-shape panels */
+
+
+  /* ============================================================
+   * SHADOW (minimal — Bauhaus is flat)
+   * ============================================================ */
+
+  --shadow-none:   none;
+  --shadow-button: 0 2px 8px rgba(0,0,0,0.12);  /* subtle hover elevation */
+
+
+  /* ============================================================
+   * Z-INDEX SCALE
+   * ============================================================ */
+
+  --z-base:    0;
+  --z-raised:  10;
+  --z-overlay: 100;
+  --z-modal:   1000;
+
+
+  /* ============================================================
+   * TRANSITION / ANIMATION
+   * ============================================================ */
+
+  --duration-fast:   150ms;
+  --duration-normal: 250ms;
+  --duration-slow:   400ms;
+  --easing-default:  cubic-bezier(0.4, 0, 0.2, 1);
+}
