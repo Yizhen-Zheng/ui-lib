@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Abstract Geometric Art</title>
+    <style>
+      /* 按照要求，背景淡黄色被单独提取到外层容器/body中。
+           SVG 本身保持绝对透明，留白区域会自然透出此背景色。 
+        */
+      body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #fdf9f1; /* 提取出的原图淡黄底色 */
+      }
+
+      .svg-container {
+        width: 90vw;
+        max-width: 500px; /* 控制最大显示尺寸，保持比例 */
+        aspect-ratio: 1 / 1;
+      }
+
+      svg {
+        width: 100%;
+        height: 100%;
+        display: block;
+        background: transparent; /* 确保 SVG 自身透明 */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="svg-container">
+      <!-- 
+            使用 300x300 的 viewBox，
+            将其划分为 3x3 的网格 (每个网格 100x100) 以完美复原比例 
+        -->
+      <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <!-- 定义可复用的星芒 (Starburst) 图形 -->
+          <g id="starburst">
+            <line x1="0" y1="-45" x2="0" y2="45" stroke="#1A1A1A" stroke-width="1.5" />
+            <line x1="0" y1="-45" x2="0" y2="45" stroke="#1A1A1A" stroke-width="1.5" transform="rotate(22.5)" />
+            <line x1="0" y1="-45" x2="0" y2="45" stroke="#1A1A1A" stroke-width="1.5" transform="rotate(45)" />
+            <line x1="0" y1="-45" x2="0" y2="45" stroke="#1A1A1A" stroke-width="1.5" transform="rotate(67.5)" />
+            <line x1="0" y1="-45" x2="0" y2="45" stroke="#1A1A1A" stroke-width="1.5" transform="rotate(90)" />
+            <line x1="0" y1="-45" x2="0" y2="45" stroke="#1A1A1A" stroke-width="1.5" transform="rotate(112.5)" />
+            <line x1="0" y1="-45" x2="0" y2="45" stroke="#1A1A1A" stroke-width="1.5" transform="rotate(135)" />
+            <line x1="0" y1="-45" x2="0" y2="45" stroke="#1A1A1A" stroke-width="1.5" transform="rotate(157.5)" />
+          </g>
+        </defs>
+
+        <!-- ================= 第一行 (y: 0 到 100) ================= -->
+
+        <!-- 左上角: 星芒 -->
+        <use href="#starburst" x="50" y="50" />
+
+        <!-- 中上角: 橙红色正圆 -->
+        <circle cx="150" cy="50" r="45" fill="#FF4F2D" />
+
+        <!-- 右侧区域: 贯穿第一和第二行的棋盘格 (x: 200-300, y: 0-200) 
+                 透明部分留白，透出底层淡黄色 -->
+        <g fill="#1A1A1A">
+          <!-- Row 1 -->
+          <rect x="200" y="0" width="25" height="25" />
+          <rect x="250" y="0" width="25" height="25" />
+          <!-- Row 2 -->
+          <rect x="225" y="25" width="25" height="25" />
+          <rect x="275" y="25" width="25" height="25" />
+          <!-- Row 3 -->
+          <rect x="200" y="50" width="25" height="25" />
+          <rect x="250" y="50" width="25" height="25" />
+          <!-- Row 4 -->
+          <rect x="225" y="75" width="25" height="25" />
+          <rect x="275" y="75" width="25" height="25" />
+          <!-- Row 5 -->
+          <rect x="200" y="100" width="25" height="25" />
+          <rect x="250" y="100" width="25" height="25" />
+          <!-- Row 6 -->
+          <rect x="225" y="125" width="25" height="25" />
+          <rect x="275" y="125" width="25" height="25" />
+          <!-- Row 7 -->
+          <rect x="200" y="150" width="25" height="25" />
+          <rect x="250" y="150" width="25" height="25" />
+          <!-- Row 8 -->
+          <rect x="225" y="175" width="25" height="25" />
+          <rect x="275" y="175" width="25" height="25" />
+        </g>
+
+        <!-- ================= 第二行 (y: 100 到 200) ================= -->
+
+        <!-- 左中角: 蓝底与眼睛图案 -->
+        <rect x="0" y="100" width="100" height="100" fill="#0055FF" />
+        <!-- 白色眼睛轮廓 -->
+        <path d="M 15 150 Q 50 115 85 150 Q 50 185 15 150 Z" fill="#FFFFFF" />
+        <!-- 黑色瞳孔外圈 -->
+        <circle cx="50" cy="150" r="15" fill="#1A1A1A" />
+        <!-- 橙色内瞳 -->
+        <circle cx="50" cy="150" r="6" fill="#FF4F2D" />
+
+        <!-- 正中间: 黄色半圆与向下的半星芒 -->
+        <!-- 黄色上半圆 -->
+        <path d="M 100 150 A 50 50 0 0 1 200 150 Z" fill="#FFD600" />
+        <!-- 精确计算角度的下半星芒，完全贴合半圆底部边缘 -->
+        <g transform="translate(150, 150)">
+          <!-- 水平底线 -->
+          <line x1="-45" y1="0" x2="45" y2="0" stroke="#1A1A1A" stroke-width="1.5" />
+          <!-- 22.5度向下辐射线 -->
+          <line x1="0" y1="0" x2="41.57" y2="17.22" stroke="#1A1A1A" stroke-width="1.5" />
+          <line x1="0" y1="0" x2="31.82" y2="31.82" stroke="#1A1A1A" stroke-width="1.5" />
+          <line x1="0" y1="0" x2="17.22" y2="41.57" stroke="#1A1A1A" stroke-width="1.5" />
+          <line x1="0" y1="0" x2="0" y2="45" stroke="#1A1A1A" stroke-width="1.5" />
+          <line x1="0" y1="0" x2="-17.22" y2="41.57" stroke="#1A1A1A" stroke-width="1.5" />
+          <line x1="0" y1="0" x2="-31.82" y2="31.82" stroke="#1A1A1A" stroke-width="1.5" />
+          <line x1="0" y1="0" x2="-41.57" y2="17.22" stroke="#1A1A1A" stroke-width="1.5" />
+        </g>
+
+        <!-- ================= 第三行 (y: 200 到 300) ================= -->
+
+        <!-- 左下角: 星芒 -->
+        <use href="#starburst" x="50" y="250" />
+
+        <!-- 中下角: 彩色三角拼图区块 (故意留白透出背景色) -->
+        <!-- 左上角红色直角三角 -->
+        <polygon points="100,250 150,250 150,200" fill="#FF4F2D" />
+        <!-- 右上角粉色直角三角 -->
+        <polygon points="150,200 150,250 200,250" fill="#FFB8D8" />
+        <!-- 左下角蓝色直角三角 -->
+        <polygon points="100,300 150,300 150,250" fill="#0055FF" />
+        <!-- 右下角黄色直角三角 -->
+        <polygon points="150,250 150,300 200,300" fill="#FFD600" />
+
+        <!-- 右下角: 大型红色直角三角 -->
+        <polygon points="200,300 300,300 300,200" fill="#FF4F2D" />
+      </svg>
+    </div>
+  </body>
+</html>
