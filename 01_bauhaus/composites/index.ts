@@ -20,3 +20,7 @@ export type { PricingCompositionProps } from './PricingComposition';
 
 export { IndustryComposition }            from './IndustryComposition';
 export type { IndustryCompositionProps }  from './IndustryComposition';
+
+export { HighlightedHeroGrid }            from './HighlightedHeroGrid';
+export type { HighlightedHeroGridProps }  from './HighlightedHeroGrid';
+
