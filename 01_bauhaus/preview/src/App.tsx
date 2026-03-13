@@ -6,7 +6,7 @@ import { RatioBox, ShapeStack, Slot, BauhausGrid } from "@layout";
 import {
   BauhausEye,
   HeroGrid,
-  HighlightedHeroGrid,
+  GridElementCombination,
   DiagonalBars,
   PricingComposition,
   IndustryComposition,
@@ -373,10 +373,10 @@ function Level3() {
 
       {/* ── HeroGrid ─────────────────────────────────────── */}
 
-      {/* ── HighlightedHeroGrid ────────────────────────── */}
-      <h3 className="sub-heading">HighlightedHeroGrid — transparent background variant</h3>
+      {/* ── GridElementCombination ────────────────────────── */}
+      <h3 className="sub-heading">GridElementCombination — transparent background variant</h3>
       <div style={{ maxWidth: "460px" }}>
-        <HighlightedHeroGrid />
+        <GridElementCombination />
       </div>
 
       {/* ── DiagonalBars ────────────────────────────────── */}

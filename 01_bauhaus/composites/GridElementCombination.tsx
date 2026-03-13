@@ -11,7 +11,7 @@ import { Checkerboard } from '../atoms/Checkerboard';
 import { Sunburst } from '../atoms/Sunburst';
 import { BauhausEye } from './BauhausEye';
 
-export interface HighlightedHeroGridProps {
+export interface GridElementCombinationProps {
   className?: string;
   style?: React.CSSProperties;
 }
@@ -20,7 +20,7 @@ export interface HighlightedHeroGridProps {
  * A perfect recreation of the cyan-highlighted top-right graphic 
  * from the reference image, matching the transparent SVG backgrounds.
  */
-export const HighlightedHeroGrid: React.FC<HighlightedHeroGridProps> = ({
+export const GridElementCombination: React.FC<GridElementCombinationProps> = ({
   className,
   style,
 }) => (
@@ -94,4 +94,4 @@ export const HighlightedHeroGrid: React.FC<HighlightedHeroGridProps> = ({
   </div>
 );
 
-export default HighlightedHeroGrid;
+export default GridElementCombination;
