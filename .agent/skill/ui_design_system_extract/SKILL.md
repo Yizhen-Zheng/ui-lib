@@ -62,6 +62,14 @@ description: extract ui design system from an existing website or image
 
 ---
 
+**[Conventions]**
+
+1. **Barrel Exports**: Each level directory (`atoms/`, `layout/`, `composites/`) must have an `index.ts` that barrel-exports all public components and their prop types. When adding a new component, always update the corresponding `index.ts`.
+
+2. **Preview Verification**: Maintain a `preview/` app (e.g. Vite + React) that imports from each level and visually verifies components against the reference image. Structure the preview by level (Level 0 → tokens/swatches, Level 1 → atoms, Level 2 → layout containers, Level 3 → composites). Each level should be visually verified before proceeding to the next.
+
+---
+
 **[Action Request]**
 现在，我将为你提供一张设计稿图片。请你首先执行 **Level 0** 的分析，告诉我你提取到了哪些 Design Tokens。等待我的确认后，再进入 Level 1。
 
