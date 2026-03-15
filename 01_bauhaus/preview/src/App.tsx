@@ -3,14 +3,7 @@ import "../../tokens.css";
 import "./App.css";
 import { Circle, HalfCircle, Triangle, Rectangle, Checkerboard, Sunburst, GridLines } from "@atoms";
 import { RatioBox, ShapeStack, Slot, BauhausGrid } from "@layout";
-import {
-  BauhausEye,
-  HeroGrid,
-  GridElementCombination,
-  DiagonalBars,
-  PricingComposition,
-  IndustryComposition,
-} from "@composites";
+import { BauhausEye, GridElementCombination, DiagonalBars } from "@composites";
 
 /* ── Small helpers ─────────────────────────────────────────── */
 
@@ -76,7 +69,7 @@ function Level1Shapes() {
         </Cell>
 
         <Cell label='<Circle fill="blue" stroke="black" />'>
-          <Circle fill="var(--color-white)" stroke="var(--color-black)" strokeWidth={3} />
+          <Circle fill="transparent" stroke="var(--color-black)" strokeWidth={3} />
         </Cell>
 
         <Cell label='<HalfCircle orientation="bottom" fill="blue" />'>
@@ -371,8 +364,6 @@ function Level3() {
         </Cell>
       </div>
 
-      {/* ── HeroGrid ─────────────────────────────────────── */}
-
       {/* ── GridElementCombination ────────────────────────── */}
       <h3 className="sub-heading">GridElementCombination — transparent background variant</h3>
       <div style={{ maxWidth: "460px" }}>
@@ -383,22 +374,6 @@ function Level3() {
       <h3 className="sub-heading">DiagonalBars — Ops Team illustration</h3>
       <div style={{ maxWidth: "480px" }}>
         <DiagonalBars />
-      </div>
-
-      {/* ── PricingComposition ────────────────────────────── */}
-      <h3 className="sub-heading">PricingComposition — pricing section</h3>
-      <div className="grid combos">
-        <Cell label="<PricingComposition /> (default)">
-          <PricingComposition />
-        </Cell>
-      </div>
-
-      {/* ── IndustryComposition ───────────────────────────── */}
-      <h3 className="sub-heading">IndustryComposition — industry experts</h3>
-      <div className="grid combos">
-        <Cell label="<IndustryComposition /> (default)">
-          <IndustryComposition />
-        </Cell>
       </div>
     </section>
   );

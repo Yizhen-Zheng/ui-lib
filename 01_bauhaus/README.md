@@ -38,20 +38,20 @@ your-project/
 `vite.config.ts`
 
 ```ts
-import path from 'path'
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import path from "path";
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      '@atoms':      path.resolve(__dirname, './bauhaus/atoms'),
-      '@layout':     path.resolve(__dirname, './bauhaus/layout'),
-      '@composites': path.resolve(__dirname, './bauhaus/composites'),
+      "@atoms": path.resolve(__dirname, "./bauhaus/atoms"),
+      "@layout": path.resolve(__dirname, "./bauhaus/layout"),
+      "@composites": path.resolve(__dirname, "./bauhaus/composites"),
     },
   },
-})
+});
 ```
 
 `tsconfig.app.json` — add under `compilerOptions`:
@@ -76,7 +76,7 @@ Import `tokens.css` **once**, at the very top of your app entry:
 
 ```tsx
 // src/main.tsx  (or _app.tsx / layout.tsx)
-import '../bauhaus/tokens.css'
+import "../bauhaus/tokens.css";
 ```
 
 This exposes all CSS variables globally:
@@ -102,19 +102,19 @@ var(--duration-normal)  /* 250ms */
 Pure SVG shapes. They always fill **100% of their parent**. Never position themselves.
 
 ```tsx
-import { Circle, HalfCircle, Triangle, Rectangle } from '@atoms'
-import { Checkerboard, Sunburst, GridLines }       from '@atoms'
+import { Circle, HalfCircle, Triangle, Rectangle } from "@atoms";
+import { Checkerboard, Sunburst, GridLines } from "@atoms";
 ```
 
-| Component | Key props | Notes |
-|---|---|---|
-| `<Circle />` | `fill`, `stroke`, `strokeWidth` | Perfect circle |
-| `<HalfCircle />` | `orientation` (`bottom`\|`top`\|`left`\|`right`), `fill` | D-shaped semicircle |
-| `<Triangle />` | `direction` (`up`\|`down`\|`left`\|`right`), `fill` | Right-angle triangle |
-| `<Rectangle />` | `fill`, `stroke`, `strokeWidth` | 100%×100% filled rect |
-| `<Checkerboard />` | `cols`, `rows`, `colorA`, `colorB` | SVG grid pattern |
-| `<Sunburst />` | `rays`, `stroke`, `strokeWidth` | Radial line burst |
-| `<GridLines />` | `cols`, `rows`, `stroke` | Thin grid overlay |
+| Component          | Key props                                                | Notes                 |
+| ------------------ | -------------------------------------------------------- | --------------------- |
+| `<Circle />`       | `fill`, `stroke`, `strokeWidth`                          | Perfect circle        |
+| `<HalfCircle />`   | `orientation` (`bottom`\|`top`\|`left`\|`right`), `fill` | D-shaped semicircle   |
+| `<Triangle />`     | `direction` (`up`\|`down`\|`left`\|`right`), `fill`      | Right-angle triangle  |
+| `<Rectangle />`    | `fill`, `stroke`, `strokeWidth`                          | 100%×100% filled rect |
+| `<Checkerboard />` | `cols`, `rows`, `colorA`, `colorB`                       | SVG grid pattern      |
+| `<Sunburst />`     | `rays`, `stroke`, `strokeWidth`                          | Radial line burst     |
+| `<GridLines />`    | `cols`, `rows`, `stroke`                                 | Thin grid overlay     |
 
 **Rule:** atoms never have layout props (`width`, `top`, etc.). The parent decides size.
 
@@ -125,7 +125,7 @@ import { Checkerboard, Sunburst, GridLines }       from '@atoms'
 Control **size, proportion, layering, position**.
 
 ```tsx
-import { RatioBox, ShapeStack, Slot, BauhausGrid } from '@layout'
+import { RatioBox, ShapeStack, Slot, BauhausGrid } from "@layout";
 ```
 
 #### `<RatioBox ratio="w:h">`
@@ -156,7 +156,6 @@ Stack multiple shapes on top of each other. Use `<Slot>` to position/size/rotate
 
 ```tsx
 <ShapeStack ratio={1} bg="var(--color-blue)">
-
   {/* Layer 1 — fills the full area */}
   <Circle fill="var(--color-white)" />
 
@@ -169,14 +168,14 @@ Stack multiple shapes on top of each other. Use `<Slot>` to position/size/rotate
   <Slot top="10%" left="10%" width="80%" rotate="45deg">
     <HalfCircle fill="var(--color-yellow)" />
   </Slot>
-
 </ShapeStack>
 ```
 
-> **Size rule:**  
-> - Direct child of `ShapeStack` (no Slot) → fills **100%** automatically  
-> - Inside `<Slot width="X%">` → fills **X%** of the ShapeStack  
-> - This is intentional — `Slot` is where you *explicitly* set size & position
+> **Size rule:**
+>
+> - Direct child of `ShapeStack` (no Slot) → fills **100%** automatically
+> - Inside `<Slot width="X%">` → fills **X%** of the ShapeStack
+> - This is intentional — `Slot` is where you _explicitly_ set size & position
 
 `Slot` props: `top` `left` `bottom` `right` `width` `height` `rotate`
 
@@ -209,32 +208,21 @@ Pre-assembled illustrations matching specific Bauhaus motifs.
 Drop in and resize with `width`.
 
 ```tsx
-import {
-  BauhausEye,
-  HeroGrid,
-  DiagonalBars,
-  PricingComposition,
-  IndustryComposition,
-} from '@composites'
+import { BauhausEye, DiagonalBars } from "@composites";
 ```
 
-| Component | Reference section | Key props |
-|---|---|---|
-| `<BauhausEye />` | Hero — eye motif | `bg`, `ringColor`, `pupilColor`, `highlightColor` |
-| `<HeroGrid />` | Hero 3×3 panel | `gap` |
-| `<DiagonalBars />` | Ops Team illustration | `ratio` |
-| `<PricingComposition />` | Pricing section | — |
-| `<IndustryComposition />` | Industry experts | — |
+| Component          | Reference section     | Key props                                         |
+| ------------------ | --------------------- | ------------------------------------------------- |
+| `<BauhausEye />`   | Hero — eye motif      | `bg`, `ringColor`, `pupilColor`, `highlightColor` |
+| `<DiagonalBars />` | Ops Team illustration | `ratio`                                           |
 
 ```tsx
-{/* Resize by wrapping in a sized container or passing width */}
-<div style={{ width: '320px' }}>
+{
+  /* Resize by wrapping in a sized container or passing width */
+}
+<div style={{ width: "320px" }}>
   <BauhausEye bg="var(--color-black)" ringColor="var(--color-yellow)" />
-</div>
-
-<div style={{ maxWidth: '460px' }}>
-  <HeroGrid />
-</div>
+</div>;
 ```
 
 ---
@@ -242,30 +230,29 @@ import {
 ## 5. Full Example — Build a Card
 
 ```tsx
-import '../bauhaus/tokens.css'
-import { Circle, HalfCircle, Checkerboard } from '@atoms'
-import { RatioBox, ShapeStack, Slot, BauhausGrid } from '@layout'
-import { BauhausEye } from '@composites'
+import "../bauhaus/tokens.css";
+import { Circle, HalfCircle, Checkerboard } from "@atoms";
+import { RatioBox, ShapeStack, Slot, BauhausGrid } from "@layout";
+import { BauhausEye } from "@composites";
 
 export function BauhausCard() {
   return (
-    <div style={{
-      width: '300px',
-      fontFamily: 'var(--font-body)',
-      background: 'var(--color-bg)',
-      border: '1px solid var(--color-black)',
-      padding: 'var(--space-4)',
-    }}>
-
+    <div
+      style={{
+        width: "300px",
+        fontFamily: "var(--font-body)",
+        background: "var(--color-bg)",
+        border: "1px solid var(--color-black)",
+        padding: "var(--space-4)",
+      }}
+    >
       {/* Illustration */}
       <BauhausGrid layout="2x2" gap="2px">
         <RatioBox ratio="1:1" bg="var(--color-blue)">
           <BauhausEye />
         </RatioBox>
         <RatioBox ratio="1:1">
-          <Checkerboard cols={4} rows={4}
-            colorA="var(--color-black)"
-            colorB="var(--color-white)" />
+          <Checkerboard cols={4} rows={4} colorA="var(--color-black)" colorB="var(--color-white)" />
         </RatioBox>
         <RatioBox ratio="1:1" bg="var(--color-yellow)">
           <HalfCircle orientation="bottom" fill="var(--color-red)" />
@@ -276,16 +263,18 @@ export function BauhausCard() {
       </BauhausGrid>
 
       {/* Text */}
-      <p style={{
-        fontSize: 'var(--text-base)',
-        color: 'var(--color-black)',
-        marginTop: 'var(--space-4)',
-        lineHeight: 'var(--leading-normal)',
-      }}>
+      <p
+        style={{
+          fontSize: "var(--text-base)",
+          color: "var(--color-black)",
+          marginTop: "var(--space-4)",
+          lineHeight: "var(--leading-normal)",
+        }}
+      >
         Your content here.
       </p>
     </div>
-  )
+  );
 }
 ```
 
