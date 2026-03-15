@@ -1,11 +1,17 @@
 /* ── Import Design Tokens ──────────────────────────────────── */
-@import '../../tokens.css';
+@import "../../tokens.css";
 
 /* ── Google Font ───────────────────────────────────────────── */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
 
 /* ── Reset ─────────────────────────────────────────────────── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 /* ── Base ──────────────────────────────────────────────────── */
 body {
@@ -69,7 +75,7 @@ body {
   margin-bottom: var(--space-4);
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  border-bottom: var(--stroke-weight-thin) solid rgba(0,0,0,0.12);
+  border-bottom: var(--stroke-weight-thin) solid rgba(0, 0, 0, 0.12);
   padding-bottom: var(--space-2);
 }
 
@@ -89,7 +95,7 @@ body {
   width: 72px;
   height: 72px;
   border-radius: var(--radius-none);
-  border: var(--stroke-weight-thin) solid rgba(0,0,0,0.15);
+  border: var(--stroke-weight-thin) solid rgba(0, 0, 0, 0.15);
 }
 .swatch-label {
   font-size: 10px;
@@ -122,16 +128,18 @@ body {
 .cell-canvas {
   width: 100%;
   aspect-ratio: 1 / 1;
-  border: var(--stroke-weight-thin) solid rgba(0,0,0,0.12);
-  background: var(--color-white);
+  border: var(--stroke-weight-thin) solid rgba(0, 0, 0, 0.12);
+  /* background: var(--color-white); */
+  background: transparent;
   position: relative;
   overflow: hidden;
 }
 /* For RatioBox previews: no forced aspect-ratio, let the content define height */
 .cell-canvas-free {
   width: 100%;
-  border: var(--stroke-weight-thin) solid rgba(0,0,0,0.12);
-  background: var(--color-white);
+  border: var(--stroke-weight-thin) solid rgba(0, 0, 0, 0.12);
+  /* background: var(--color-white); */
+  background: transparent;
   overflow: hidden;
 }
 .cell-label {
